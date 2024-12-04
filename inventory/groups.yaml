@@ -1,0 +1,18 @@
+routers: 
+  data: 
+    ntp: 
+      servers: 
+        - 1.1.1.1
+
+switches: 
+    data: 
+      ntp: 
+        servers: 
+          - 2.2.2.2 
+
+Ismael: 
+  data:
+    site: La_Vega  
+    syslog: 
+      servers: 
+        - 3.3.3.3

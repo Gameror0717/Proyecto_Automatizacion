@@ -1,0 +1,31 @@
+R35:
+  hostname: "192.168.100.121"
+  groups:
+    - routers
+    - Ismael
+  platform: "ios"
+  username: "ierr"
+  password: "Cisco12345"
+  connection_options:
+    napalm:
+      platform: "ios"
+      extras:
+        optional_args:
+          transport: "telnet"
+          port: 33315
+
+S11:
+  hostname: "192.168.100.121"
+  groups:
+    - switches
+    - Ismael
+  platform: "ios"
+  username: "ierr"
+  password: "Cisco12345"
+  connection_options:
+    napalm:
+      platform: "ios"
+      extras:
+        optional_args:
+          transport: "telnet"
+          port: 33291
