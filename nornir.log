@@ -201,3 +201,250 @@ nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
 
 2024-12-03 22:04:49,560 -  nornir.core -  WARNING -        run() - Task 'get_interface_errors' has not been run – 0 hosts selected
 2024-12-03 22:05:04,222 -  nornir.core -  WARNING -        run() - Task 'get_interface_errors' has not been run – 0 hosts selected
+2024-12-04 12:18:50,799 -  nornir.core -     INFO -        run() - Running task 'get_interface_errors' with args {} on 2 hosts
+2024-12-04 12:18:55,715 - nornir.core.task -    ERROR -      start() - Host 'S11': task 'get_interface_errors' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/ierr0001/Automatizacion/Proyecto_Automatizacion/main.py", line 39, in get_interface_errors
+    "tx_utilization": tx_utilization,
+UnboundLocalError: local variable 'tx_utilization' referenced before assignment
+
+2024-12-04 12:18:55,716 - nornir.core.task -    ERROR -      start() - Host 'R35': task 'get_interface_errors' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/ierr0001/Automatizacion/Proyecto_Automatizacion/main.py", line 39, in get_interface_errors
+    "tx_utilization": tx_utilization,
+UnboundLocalError: local variable 'tx_utilization' referenced before assignment
+
+2024-12-04 16:38:05,853 -  nornir.core -     INFO -        run() - Running task 'get_interface_errors' with args {} on 1 hosts
+2024-12-04 16:38:09,100 - nornir.core.task -    ERROR -      start() - Host 'R35': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/napalm/ios/ios.py", line 173, in open
+    self.device = self._netmiko_open(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/napalm/base/base.py", line 114, in _netmiko_open
+    self._netmiko_device = ConnectHandler(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/ssh_dispatcher.py", line 401, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 490, in __init__
+    self._open()
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 495, in _open
+    self.establish_connection()
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1127, in establish_connection
+    self.telnet_login()
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/cisco_base_connection.py", line 195, in telnet_login
+    raise NetmikoAuthenticationException(msg)
+netmiko.exceptions.NetmikoAuthenticationException: Login failed: 192.168.100.121
+
+2024-12-04 16:38:09,101 - nornir.core.task -    ERROR -      start() - Host 'R35': task 'get_interface_errors' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/ierr0001/Automatizacion/Proyecto_Automatizacion/main.py", line 21, in get_interface_errors
+    result = task.run(task=napalm_get, getters=["interfaces"])
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2024-12-04 16:38:32,918 -  nornir.core -     INFO -        run() - Running task 'get_interface_errors' with args {} on 1 hosts
+2024-12-04 16:38:35,998 - nornir.core.task -    ERROR -      start() - Host 'S11': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/napalm/ios/ios.py", line 173, in open
+    self.device = self._netmiko_open(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/napalm/base/base.py", line 114, in _netmiko_open
+    self._netmiko_device = ConnectHandler(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/ssh_dispatcher.py", line 401, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 490, in __init__
+    self._open()
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 495, in _open
+    self.establish_connection()
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1127, in establish_connection
+    self.telnet_login()
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/cisco_base_connection.py", line 195, in telnet_login
+    raise NetmikoAuthenticationException(msg)
+netmiko.exceptions.NetmikoAuthenticationException: Login failed: 192.168.100.121
+
+2024-12-04 16:38:35,999 - nornir.core.task -    ERROR -      start() - Host 'S11': task 'get_interface_errors' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/ierr0001/Automatizacion/Proyecto_Automatizacion/main.py", line 21, in get_interface_errors
+    result = task.run(task=napalm_get, getters=["interfaces"])
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2024-12-04 16:38:50,632 -  nornir.core -  WARNING -        run() - Task 'get_interface_errors' has not been run – 0 hosts selected
+2024-12-04 16:38:54,516 -  nornir.core -  WARNING -        run() - Task 'get_interface_errors' has not been run – 0 hosts selected
+2024-12-04 16:38:56,817 -  nornir.core -  WARNING -        run() - Task 'get_interface_errors' has not been run – 0 hosts selected
+2024-12-04 16:39:03,076 -  nornir.core -  WARNING -        run() - Task 'get_interface_errors' has not been run – 0 hosts selected
+2024-12-04 16:49:00,495 -  nornir.core -     INFO -        run() - Running task 'get_interface_errors' with args {} on 1 hosts
+2024-12-04 16:49:21,622 - nornir.core.task -    ERROR -      start() - Host 'R35': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/napalm/ios/ios.py", line 173, in open
+    self.device = self._netmiko_open(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/napalm/base/base.py", line 114, in _netmiko_open
+    self._netmiko_device = ConnectHandler(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/ssh_dispatcher.py", line 401, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 490, in __init__
+    self._open()
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 495, in _open
+    self.establish_connection()
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1122, in establish_connection
+    self.remote_conn = telnetlib.Telnet(  # type: ignore
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/_telnetlib/telnetlib.py", line 222, in __init__
+    self.open(host, port, timeout)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/_telnetlib/telnetlib.py", line 239, in open
+    self.sock = socket.create_connection((host, port), timeout)
+  File "/usr/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+2024-12-04 16:49:21,623 - nornir.core.task -    ERROR -      start() - Host 'R35': task 'get_interface_errors' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/ierr0001/Automatizacion/Proyecto_Automatizacion/main.py", line 21, in get_interface_errors
+    result = task.run(task=napalm_get, getters=["interfaces"])
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2024-12-04 17:06:13,337 -  nornir.core -     INFO -        run() - Running task 'get_interface_errors' with args {} on 2 hosts
+2024-12-04 17:06:34,401 - nornir.core.task -    ERROR -      start() - Host 'R35': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/napalm/ios/ios.py", line 173, in open
+    self.device = self._netmiko_open(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/napalm/base/base.py", line 114, in _netmiko_open
+    self._netmiko_device = ConnectHandler(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/ssh_dispatcher.py", line 401, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 490, in __init__
+    self._open()
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 495, in _open
+    self.establish_connection()
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1122, in establish_connection
+    self.remote_conn = telnetlib.Telnet(  # type: ignore
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/_telnetlib/telnetlib.py", line 222, in __init__
+    self.open(host, port, timeout)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/_telnetlib/telnetlib.py", line 239, in open
+    self.sock = socket.create_connection((host, port), timeout)
+  File "/usr/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+2024-12-04 17:06:34,401 - nornir.core.task -    ERROR -      start() - Host 'S11': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/napalm/ios/ios.py", line 173, in open
+    self.device = self._netmiko_open(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/napalm/base/base.py", line 114, in _netmiko_open
+    self._netmiko_device = ConnectHandler(
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/ssh_dispatcher.py", line 401, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 490, in __init__
+    self._open()
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 495, in _open
+    self.establish_connection()
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1122, in establish_connection
+    self.remote_conn = telnetlib.Telnet(  # type: ignore
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/_telnetlib/telnetlib.py", line 222, in __init__
+    self.open(host, port, timeout)
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/netmiko/_telnetlib/telnetlib.py", line 239, in open
+    self.sock = socket.create_connection((host, port), timeout)
+  File "/usr/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+2024-12-04 17:06:34,402 - nornir.core.task -    ERROR -      start() - Host 'R35': task 'get_interface_errors' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/ierr0001/Automatizacion/Proyecto_Automatizacion/main.py", line 21, in get_interface_errors
+    result = task.run(task=napalm_get, getters=["interfaces"])
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2024-12-04 17:06:34,403 - nornir.core.task -    ERROR -      start() - Host 'S11': task 'get_interface_errors' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/ierr0001/Automatizacion/Proyecto_Automatizacion/main.py", line 21, in get_interface_errors
+    result = task.run(task=napalm_get, getters=["interfaces"])
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2024-12-04 17:07:11,188 -  nornir.core -     INFO -        run() - Running task 'get_interface_errors' with args {} on 1 hosts
+2024-12-04 17:07:17,760 - nornir.core.task -    ERROR -      start() - Host 'R35': task 'get_interface_errors' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ierr0001/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/ierr0001/Automatizacion/Proyecto_Automatizacion/main.py", line 39, in get_interface_errors
+    "tx_utilization": tx_utilization,
+UnboundLocalError: local variable 'tx_utilization' referenced before assignment
+

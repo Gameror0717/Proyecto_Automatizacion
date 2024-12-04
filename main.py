@@ -35,9 +35,7 @@ def get_interface_errors(task):
             "rx_errors": stats.get("rx_errors", 0),
             "input_drops": stats.get("input_drops"),
             "output_drops": stats.get("output_drops", 0),
-            "rx_errors": stats.get("rx_errors", 0),
-            "tx_utilization": tx_utilization,
-            "rx_utilization": rx_utilization
+            "rx_errors": stats.get("rx_errors", 0)
         }
         
         # Comprobar cambios de estado
@@ -48,14 +46,8 @@ def get_interface_errors(task):
                 prev["tx_errors"] != current_state[interface]["tx_errors"] or 
                 prev["rx_errors"] != current_state[interface]["rx_errors"] or
                 prev["input_drops"] != current_state[interface]["input_drops"] or 
-                prev["output_drops"] != current_state[interface]["output_drops"] or 
-                prev["tx_utilization"] != current_state[interface]["tx_utilization"] or
-                prev["rx_utilization"] != current_state[interface]["rx_utilization"]):
+                prev["output_drops"] != current_state[interface]["output_drops"]):
                 state_changes.append(f"Cambio detectado en {interface}:\n {current_state[interface]}")
-
-
-        tx_utilization = stats.get("tx_bps", 0) / stats.get("speed", 1)
-        rx_utilization = stats.get("rx_bps", 0) / stats.get("speed", 1)
         
         if stats.get("is_up") is False or stats.get("is_enabled") is False:
             error_message = f"La interfaz {interface} está caída o deshabilitada.\n"
@@ -65,9 +57,6 @@ def get_interface_errors(task):
             report.append(error_message)
         elif stats.get("input_drops", 0) > 0 or stats.get("output_drops", 0) > 0:
             error_message = f"La interfaz {interface} tiene drops: Input Drops: {stats.get('input_drops')}, Output Drops: {stats.get('output_drops')}.\n"
-            report.append(error_message)
-        elif tx_utilization > 0.8 or rx_utilization > 0.8:
-            error_message = f"La interfaz {interface} está saturada (TX: {tx_utilization*100:.2f}%, RX: {rx_utilization*100:.2f}%).\n"
             report.append(error_message)
         else:
             state = f"La interfaz {interface} está operativa.\n"
