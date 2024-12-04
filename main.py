@@ -5,6 +5,7 @@ from nornir_napalm.plugins.tasks import napalm_get
 from nornir.core.filter import F
 from datetime import datetime
 import time
+import threading
 import telebot
 
 # TOKEN del bot (debes mantenerlo seguro y no compartirlo)
