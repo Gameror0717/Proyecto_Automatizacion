@@ -448,3 +448,4 @@ Traceback (most recent call last):
     "tx_utilization": tx_utilization,
 UnboundLocalError: local variable 'tx_utilization' referenced before assignment
 
+2024-12-04 17:10:47,012 -  nornir.core -     INFO -        run() - Running task 'get_interface_errors' with args {} on 1 hosts

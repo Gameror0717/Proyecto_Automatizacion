@@ -35,7 +35,6 @@ def get_interface_errors(task):
             "rx_errors": stats.get("rx_errors", 0),
             "input_drops": stats.get("input_drops"),
             "output_drops": stats.get("output_drops", 0),
-            "rx_errors": stats.get("rx_errors", 0)
         }
         
         # Comprobar cambios de estado
@@ -159,7 +158,7 @@ def menu_reporte(message):
         "Opciones:\n"
         "1. /reporte_individual <nombre_dispositivo> - Generar reporte para un dispositivo específico.\n"
         "2. /reporte_total - Generar reporte combinado de todos los dispositivos.\n"
-        "3. /listar_dispositivos - Ver la lista de dispositivos disponibles."
+        "3. /listar_dispositivos - Ver la lista de dispositivos disponibles.\n"
         "4. /iniciar_monitoreo - Empieza monitoreo automatico\n"
         "5. /detener_monitoreo - Detiene monitoreo automatico"
     )
