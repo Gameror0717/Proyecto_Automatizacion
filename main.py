@@ -87,6 +87,32 @@ def generar_reporte_total(nr):
     else:
         return None, "No se encontraron errores en los dispositivos."
 
+# Monitoreo automático
+def monitoreo_automatico(nr, chat_id):
+    while monitoreo_activo:
+        result = nr.run(task=get_interface_errors)
+        report = []
+        state_changes = []
+
+        for device_name, task_result in result.items():
+            report.append(f"== Reporte de {device_name} ==")
+            for r in task_result:
+                errores, cambios = r.result
+                report.extend(errores)
+                state_changes.extend(cambios)
+
+        if state_changes:
+            filename = f"reporte_automatico_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+            filepath = guardar_reporte(report, filename)
+
+            # Enviar reporte automáticamente
+            with open(filepath, 'rb') as file:
+                bot.send_document(chat_id, file)
+
+            bot.send_message(chat_id, "Se detectaron cambios en el estado de las interfaces. Revisa el reporte adjunto.")
+        time.sleep(30)  # Intervalo de monitoreo (30 segundos)
+
+
 # Inicialización de Nornir
 nr = InitNornir(config_file="config.yaml")
 
