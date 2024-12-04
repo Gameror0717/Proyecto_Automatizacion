@@ -35,8 +35,8 @@ def get_interface_errors(task):
             "input_drops": stats.get("input_drops"),
             "output_drops": stats.get("output_drops", 0),
             "rx_errors": stats.get("rx_errors", 0),
-            tx_utilization,
-            rx_utilization
+            "tx_utilization": tx_utilization,
+            "rx_utilization": rx_utilization
         }
         
         # Comprobar cambios de estado
@@ -48,8 +48,8 @@ def get_interface_errors(task):
                 prev["rx_errors"] != current_state[interface]["rx_errors"] or
                 prev["input_drops"] != current_state[interface]["input_drops"] or 
                 prev["output_drops"] != current_state[interface]["output_drops"] or 
-                prev[tx_utilization] != current_state[interface][tx_utilization] or
-                prev[rx_utilization] != current_state[interface][rx_utilization]):
+                prev["tx_utilization"] != current_state[interface]["tx_utilization"] or
+                prev["rx_utilization"] != current_state[interface]["rx_utilization"]):
                 state_changes.append(f"Cambio detectado en {interface}:\n {current_state[interface]}")
 
 
