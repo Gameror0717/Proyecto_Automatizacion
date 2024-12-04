@@ -455,3 +455,6 @@ UnboundLocalError: local variable 'tx_utilization' referenced before assignment
 2024-12-04 17:19:43,147 -  nornir.core -     INFO -        run() - Running task 'get_interface_errors' with args {} on 1 hosts
 2024-12-04 17:19:50,167 -  nornir.core -     INFO -        run() - Running task 'get_interface_errors' with args {} on 1 hosts
 2024-12-04 17:22:14,154 -  nornir.core -     INFO -        run() - Running task 'get_interface_errors' with args {} on 2 hosts
+2024-12-04 17:28:31,670 -  nornir.core -     INFO -        run() - Running task 'get_interface_errors' with args {} on 1 hosts
+2024-12-04 17:28:58,610 -  nornir.core -     INFO -        run() - Running task 'get_interface_errors' with args {} on 1 hosts
+2024-12-04 17:29:51,098 -  nornir.core -     INFO -        run() - Running task 'get_interface_errors' with args {} on 1 hosts
