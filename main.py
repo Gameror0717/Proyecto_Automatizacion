@@ -134,7 +134,7 @@ def monitoreo_automatico(nr, chat_id):
         state_changes = []
 
         for device_name, task_result in result.items():
-            report.append(f"== Reporte de {device_name} ==")
+            report.append(f"\n{'='*20} Reporte de {device_name} {'='*20}\n")
             for r in task_result:
                 errores, cambios = r.result
                 report.extend(errores)
@@ -215,6 +215,18 @@ def listar_dispositivos(message):
         bot.reply_to(message, f"Dispositivos disponibles:\n{dispositivos_str}")
     else:
         bot.reply_to(message, "No hay dispositivos disponibles en el inventario.")
+
+@bot.message_handler(commands=["iniciar_monitoreo"])
+def iniciar_monitoreo(message):
+    chat_id = message.chat.id
+    bot.reply_to(message, "Monitoreo automático activado. Se enviarán reportes si se detectan cambios en los dispositivos.")
+    threading.Thread(target=monitoreo_automatico, args=(nr, chat_id)).start()
+
+@bot.message_handler(commands=["detener_monitoreo"])
+def detener_monitoreo(message):
+    global monitoreo_activo
+    monitoreo_activo = False
+    bot.reply_to(message, "Monitoreo automático detenido.")
 
 # Iniciar el bot
 bot.polling()
