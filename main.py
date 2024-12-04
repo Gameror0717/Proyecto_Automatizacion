@@ -170,6 +170,8 @@ def menu_reporte(message):
         "1. /reporte_individual <nombre_dispositivo> - Generar reporte para un dispositivo específico.\n"
         "2. /reporte_total - Generar reporte combinado de todos los dispositivos.\n"
         "3. /listar_dispositivos - Ver la lista de dispositivos disponibles."
+        "4. /iniciar_monitoreo - Empieza monitoreo automatico\n"
+        "5. /detener_monitoreo - Detiene monitoreo automatico"
     )
     bot.reply_to(message, opciones)
 
