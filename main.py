@@ -77,7 +77,7 @@ def guardar_reporte(report, filename):
     directory = crear_direc()
     filepath = os.path.join(directory, filename)
     with open(filepath, "w") as f:
-        f.write("\n".join(report))
+        f.write("\n".join(map(str, report)))
     return filepath
 
 # Funciones para generar reportes
@@ -96,7 +96,7 @@ def generar_reporte_individual(nr, device_name):
     if report:
         filename = f"reporte_{device_name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
         filepath = guardar_reporte(report, filename)
-        return filepath, "\n".join(report)
+        return filepath, "\n".join(map(str, report))
     else:
         return None, f"No se encontraron errores en el dispositivo {device_name}."
 
@@ -111,7 +111,7 @@ def generar_reporte_total(nr):
     if report:
         filename = f"reporte_combinado_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
         filepath = guardar_reporte(report, filename)
-        return filepath, "\n".join(report)
+        return filepath, "\n".join(map(str, report))
     else:
         return None, "No se encontraron errores en los dispositivos."
 

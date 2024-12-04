@@ -1,0 +1,8 @@
+== Reporte de R35 ==
+['La interfaz Ethernet0/0 está operativa.\n', 'La interfaz Ethernet0/1 está operativa.\n', 'La interfaz Ethernet0/2 está operativa.\n', 'La interfaz Ethernet0/3 está caída o deshabilitada.\n', 'La interfaz Loopback0 está operativa.\n']
+[]
+interfaces
+== Reporte de S11 ==
+['La interfaz Ethernet0/0 está operativa.\n', 'La interfaz Ethernet0/1 está operativa.\n', 'La interfaz Ethernet0/2 está operativa.\n', 'La interfaz Ethernet0/3 está caída o deshabilitada.\n']
+[]
+interfaces
