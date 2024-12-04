@@ -11,12 +11,48 @@ import telebot
 TOKEN = "8091293463:AAFZCmV4AbQPZ4uO3JPChPaRL9q3EkypEMA"
 bot = telebot.TeleBot(TOKEN)
 
+# Variables globales para el monitoreo
+previous_state = {}
+monitoreo_activo = True
+
 # Función para obtener errores en las interfaces de red
 def get_interface_errors(task):
     result = task.run(task=napalm_get, getters=["interfaces"])
     interfaces = result.result["interfaces"]
     report = []
+    state_changes = []
+    
+    global previous_state
+    current_state = {}
+
     for interface, stats in interfaces.items():
+        # Guardar estado actual
+        current_state[interface] = {
+            "is_up": stats.get("is_up"),
+            "is_enabled": stats.get("is_enabled"),
+            "tx_errors": stats.get("tx_errors", 0),
+            "rx_errors": stats.get("rx_errors", 0),
+            "input_drops": stats.get("input_drops"),
+            "output_drops": stats.get("output_drops", 0),
+            "rx_errors": stats.get("rx_errors", 0),
+            tx_utilization,
+            rx_utilization
+        }
+        
+        # Comprobar cambios de estado
+        if interface in previous_state:
+            prev = previous_state[interface]
+            if (prev["is_up"] != current_state[interface]["is_up"] or 
+                prev["is_enabled"] != current_state[interface]["is_enabled"] or 
+                prev["tx_errors"] != current_state[interface]["tx_errors"] or 
+                prev["rx_errors"] != current_state[interface]["rx_errors"] or
+                prev["input_drops"] != current_state[interface]["input_drops"] or 
+                prev["output_drops"] != current_state[interface]["output_drops"] or 
+                prev[tx_utilization] != current_state[interface][tx_utilization] or
+                prev[rx_utilization] != current_state[interface][rx_utilization]):
+                state_changes.append(f"Cambio detectado en {interface}:\n {current_state[interface]}")
+
+
         tx_utilization = stats.get("tx_bps", 0) / stats.get("speed", 1)
         rx_utilization = stats.get("rx_bps", 0) / stats.get("speed", 1)
         
@@ -36,7 +72,10 @@ def get_interface_errors(task):
             state = f"La interfaz {interface} está operativa.\n"
             report.append(state)
 
-    return report
+    # Actualizar estado anterior
+    previous_state = current_state
+
+    return report, state_changes
 
 # Funciones auxiliares
 def crear_direc():
@@ -110,7 +149,7 @@ def monitoreo_automatico(nr, chat_id):
                 bot.send_document(chat_id, file)
 
             bot.send_message(chat_id, "Se detectaron cambios en el estado de las interfaces. Revisa el reporte adjunto.")
-        time.sleep(30)  # Intervalo de monitoreo (30 segundos)
+        time.sleep(60) 
 
 
 # Inicialización de Nornir
